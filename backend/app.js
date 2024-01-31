@@ -7,10 +7,10 @@ const app = express();
 
 
 // Serve static files from the 'client' directory
-app.use(express.static(path.resolve(__dirname, 'public','build')));
-app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'public', 'build', 'index.html'));
-  });
+app.get('/',(req,res)=>{
+    app.use(express.static(path.resolve(__dirname,'client','build')))
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+})
 app.use(cors());
 const PORT = 5000;
 // Load existing employee records
