@@ -1,45 +1,5 @@
 [
   {
-    "id": 1,
-    "fullName": "John Doe",
-    "age": 28,
-    "dateOfBirth": "1994-05-15",
-    "salary": 60000,
-    "department": "IT"
-  },
-  {
-    "id": 2,
-    "fullName": "Jane Smith",
-    "age": 35,
-    "dateOfBirth": "1987-10-22",
-    "salary": 75000,
-    "department": "HR"
-  },
-  {
-    "id": 5,
-    "fullName": "David Miller",
-    "age": 45,
-    "dateOfBirth": "1977-12-01",
-    "salary": 85000,
-    "department": "IT"
-  },
-  {
-    "id": 6,
-    "fullName": "Samantha White",
-    "age": 29,
-    "dateOfBirth": "1993-06-20",
-    "salary": 62000,
-    "department": "HR"
-  },
-  {
-    "id": 7,
-    "fullName": "Richard Turner",
-    "age": 38,
-    "dateOfBirth": "1984-09-14",
-    "salary": 78000,
-    "department": "Finance"
-  },
-  {
     "id": 8,
     "fullName": "Emily Davis",
     "age": 31,
@@ -48,12 +8,20 @@
     "department": "Marketing"
   },
   {
-    "id": 9,
-    "fullName": "Michael Wilson",
-    "age": 34,
-    "dateOfBirth": "1988-11-08",
-    "salary": 72000,
-    "department": "IT"
+    "fullName": "govind dangi",
+    "age": "23",
+    "dateOfBirth": "2006-01-31",
+    "salary": "25000",
+    "department": "HR",
+    "id": 6
+  },
+  {
+    "fullName": "John Doe",
+    "age": 28,
+    "dateOfBirth": "1994-05-15",
+    "salary": 60000,
+    "department": "IT",
+    "id": 2
   },
   {
     "id": 10,
@@ -62,5 +30,13 @@
     "dateOfBirth": "1996-02-28",
     "salary": 58000,
     "department": "HR"
+  },
+  {
+    "id": 9,
+    "fullName": "Michael Wilson",
+    "age": 34,
+    "dateOfBirth": "1988-11-08",
+    "salary": 72000,
+    "department": "IT"
   }
 ]

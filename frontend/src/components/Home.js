@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import "./Home.css"
 import UpdateDetails from './UpdateDetails';
 import Allemployee from './Allemployee';
+import Filter from './Filter';
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
     // const [searchedEmployee, setSearchedEmployee] = useState(null);
@@ -51,6 +52,8 @@ export default function Home() {
         <div>
             <input type="text" placeholder="Search..." value={searchTerm} onChange={searchItem} />
             <button onClick={searchEmployee}>Search</button>
+
+            <Filter setAllEmployee={setAllEmployee}/>
 
             <div className="employees-page">
                 <h1>Employee Details</h1>

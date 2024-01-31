@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,5 +16,8 @@
     "fs": "^0.0.1-security",
     "install": "^0.13.0",
     "npm": "^10.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
   }
 }
