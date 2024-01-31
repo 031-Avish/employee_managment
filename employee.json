@@ -1,11 +1,11 @@
 [
   {
-    "id": 8,
-    "fullName": "Emily Davis",
-    "age": 31,
-    "dateOfBirth": "1990-04-25",
-    "salary": 70000,
-    "department": "Marketing"
+    "fullName": "Avish Mehta",
+    "age": "23",
+    "dateOfBirth": "1990-01-28",
+    "salary": "20000",
+    "department": "HR",
+    "id": 8
   },
   {
     "fullName": "govind dangi",
