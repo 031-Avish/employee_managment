@@ -5,7 +5,7 @@ const path=require('path');
 const cors = require('cors');
 const app = express();
 
-
+console.log(__dirname);
 // Serve static files from the 'client' directory
 app.get('/',(req,res)=>{
     app.use(express.static(path.resolve(__dirname,'frontend','build')))
