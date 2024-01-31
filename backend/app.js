@@ -1,8 +1,14 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const path=require('path');
 const cors = require('cors');
 const app = express();
+
+
+// Serve static files from the 'client' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(cors());
 const PORT = 5000;
 // Load existing employee records
