@@ -75,7 +75,7 @@ export default function Home() {
             <div className="employees-page">
                 <div>
                     {!show && (
-                        <button onClick={changeButton}>Calculate Average Salary</button>
+                        <button onClick={calcuateSal}>Calculate Average Salary</button>
                     )}
                     {
                         show &&(
