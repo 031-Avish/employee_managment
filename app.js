@@ -46,10 +46,11 @@ app.get('/getAllOnSearch', (req, res) => {
     }
 });
 app.post('/updateEmployee/', (req, res) => {
-    // Update an Employee's Record
     try {
         const employeeId = req.body.id;
         const updatedData = req.body.formData;
+        const Validation = Object.values(updatedData).every(value => value !== undefined && value !== null);
+        if(!Validation) res.json({error:'please fill all the fields'});
         // console.log(updatedData);
         const employeeIndex = employees.findIndex(employee => employee.id === employeeId);
         if (employeeIndex !== -1) {

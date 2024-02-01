@@ -21,6 +21,10 @@ export default function Allemployee({ employee ,setAllEmployee }) {
         console.log(employee.id);
         const {data} = await axios.post(`/updateEmployee`, { id: employee.id, formData });
         console.log('Updated details:', data);
+        if(data.error===undefined){
+          alert(data.error);
+          return;
+        }
         setShowUpdateForm(false);
         setAllEmployee(data);
         
