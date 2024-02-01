@@ -15,14 +15,16 @@ export default function Allemployee({ employee, setAllEmployee }) {
     setUpdatedEmp(prevState => ({
       ...prevState,
       [name]: value
-    }));
+    })
+    );
+    console.log(updatedEmp);
   };
 
   // update employee and save in db 
   const updateEmployee = async (e) => {
     e.preventDefault();
     try {
-      console.log(employee.id);
+      console.log(updatedEmp);
       const { data } = await axios.post(`/updateEmployee`, { id: employee.id, updatedEmp });
       console.log('Updated details:', data);
       if (data.error !== undefined) {
@@ -53,7 +55,7 @@ export default function Allemployee({ employee, setAllEmployee }) {
     }
   }
 
-  
+
   return (
     <div>
       <div className="employees-detail" key={employee.id}>

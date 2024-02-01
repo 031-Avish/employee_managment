@@ -26,7 +26,6 @@ try {
     console.error('Error reading file:', err.message);
 }
 // save the data back to file
-let empsort= [...employees];
 function saveInFile() {
     fs.writeFileSync('employee.json', JSON.stringify(employees, null, 2), 'utf8');
 }
@@ -47,7 +46,7 @@ app.get('/getAllEmployee', (req, res) => {
 app.get('/getAllOnSearch', (req, res) => {
     try {
         const query = req.query.name;
-        // console.log(query); 
+        console.log(query); 
         const result = employees.filter(employee => employee.fullName.toLowerCase().includes(query.toLowerCase()));
         // console.log(result);
         res.status(200).json(result);
@@ -60,22 +59,22 @@ app.get('/getAllOnSearch', (req, res) => {
 app.post('/updateEmployee/', (req, res) => {
     try {
         const employeeId = req.body.id;
-        const updatedData = req.body.formData;
-
+        const updatedData = req.body.updatedEmp;
+        console.log(req.bod)
         // verify all values are entered correctly
         for (let key in updatedData) {
             if (updatedData[key] === null || updatedData[key] === undefined || updatedData[key] === '') {
                 res.json({error:'please fill all the fields'});
-        
         }  
     }
         // find the indec of employee and update it 
         const employeeIndex = employees.findIndex(employee => employee.id === employeeId);
         if (employeeIndex !== -1) {
+            console.log(updatedData);
           employees[employeeIndex] = {...updatedData,id:employeeId};
-        //   console.log("THIS IS A UPDATE", employees[employeeIndex]);
+          console.log("THIS IS A UPDATE", employees[employeeIndex]);
           saveInFile();
-          res.json(employees);
+          res.status(200).json(employees);
         } else {
           res.status(404).json({ error: 'Employee not found.' });
         }
@@ -107,7 +106,7 @@ app.post('/updateEmployee/', (req, res) => {
         if(option=="nameAsc")
         {
             console.log("ara h");
-            const nameAsc = empsort.sort((a,b)=>
+            const nameAsc = employees.sort((a,b)=>
             {
                 return a.fullName.localeCompare(b.fullName);
             });
@@ -116,7 +115,7 @@ app.post('/updateEmployee/', (req, res) => {
         }
         else if(option=="nameDesc")
         {
-            const nameDesc = empsort.sort((a,b)=>
+            const nameDesc = employees.sort((a,b)=>
             {
                 return b.fullName.localeCompare(a.fullName);
             });
@@ -124,7 +123,7 @@ app.post('/updateEmployee/', (req, res) => {
         }
         else if(option=="salaryLow")
         {
-            const salaryLow = empsort.sort((a,b)=>
+            const salaryLow = employees.sort((a,b)=>
             {
                 return a.salary-b.salary;
             });
@@ -132,7 +131,7 @@ app.post('/updateEmployee/', (req, res) => {
         }
         else if(option=="salaryHigh")
         {
-            const salaryHigh = empsort.sort((a,b)=>
+            const salaryHigh = employees.sort((a,b)=>
             {
                 return b.salary-a.salary;
             });
