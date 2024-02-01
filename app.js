@@ -121,6 +121,15 @@ app.post('/updateEmployee/', (req, res) => {
     }
     
   })
+  app.get('/calcutateAvgSal', (req, res) => {
+    if (employees.length === 0) {
+      res.json({ error: 'No employees in the company.' });
+    } else {
+      const averageSalary =  employees.reduce((acc, employee) => acc + employee.salary, 0);
+      console.log(averageSalary);
+      res.send( averageSalary);
+    }
+  });
   
 
 app.listen(PORT, () => {

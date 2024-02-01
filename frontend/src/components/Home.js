@@ -10,7 +10,21 @@ export default function Home() {
     const [isUpdateClicked, setIsUpdateClicked] = useState(false);
     
     const [allEmployee, setAllEmployee] = useState(null);
-
+    const [averageSal,setAverageSal]=useState(null);
+    const [show,setShow]=useState(false);
+    const calcuateSal=async()=>{
+        try{
+            const {data}=await axios.get('/calcutateAvgSal');
+            setAverageSal(data);
+            setShow(true);
+        }catch(error)
+        {
+            console.log(error);
+        }
+    };
+    const changeButton=()=>{
+        setShow(!show);
+    }
     const searchItem = function (e) {
         setSearchTerm(e.target.value);
         if (searchTerm.length == 1)
@@ -59,6 +73,21 @@ export default function Home() {
                 <Filter setAllEmployee={setAllEmployee} />
             </div>
             <div className="employees-page">
+                <div>
+                    {!show && (
+                        <button onClick={changeButton}>Calculate Average Salary</button>
+                    )}
+                    {
+                        show &&(
+                            <div>
+                                <h3>Average Salary is {averageSal}</h3>
+                                <button
+                                    onClick={changeButton}> Hide salary
+                                </button>
+                            </div>
+                        )
+                    }
+                </div>
                 <h1>Employee Details</h1>
                 {allEmployee ? (
                     <div className="employees-grid">
