@@ -19,7 +19,7 @@ export default function Home() {
     }
     const getAllEmployee = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/getAllEmployee');
+            const { data } = await axios.get('/getAllEmployee');
             setAllEmployee(data);
             console.log(allEmployee);
         }
