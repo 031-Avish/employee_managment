@@ -148,7 +148,8 @@ app.post('/updateEmployee/', (req, res) => {
     if (employees.length === 0) {
       res.json({ error: 'Number of employees are zero' });
     } else {
-      const averageSalary =  employees.reduce((acc, employee) => acc + parseInt(employee.salary), 0);
+      let averageSalary =  employees.reduce((acc, employee) => acc + parseInt(employee.salary), 0);
+      averageSalary=averageSalary/employees.length;
       res.json( {averageSalary:averageSalary});
     }
   });
