@@ -7,11 +7,18 @@ const app = express();
 
 console.log(__dirname);
 // Serve static files from the 'client' directory
-app.get('/',(req,res)=>{
-    app.use(express.static(path.resolve(__dirname,'build')))
-    res.sendFile(path.resolve(__dirname,'build','index.html'))
-})
+// app.get('/',(req,res)=>{
+//     app.use(express.static(path.resolve(__dirname,'build')))
+//     res.sendFile(path.resolve(__dirname,'build','index.html'))
+// })
 app.use(cors());
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Serve the 'index.html' file from the 'build' directory
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 const PORT = 5000;
 // Load existing employee records
 // let employees;
@@ -64,9 +71,9 @@ let employees=[
   ]
 // console.log(employees)
 let empsort= [...employees];
-function saveEmployeesToFile() {
-    fs.writeFileSync('employee.json', JSON.stringify(employees, null, 2), 'utf8');
-}
+// function saveEmployeesToFile() {
+//     fs.writeFileSync('employee.json', JSON.stringify(employees, null, 2), 'utf8');
+// }
   
 app.use(bodyParser.json());
 app.get('/getAllEmployee', (req, res) => {
@@ -98,7 +105,7 @@ app.post('/updateEmployee/', (req, res) => {
         if (employeeIndex !== -1) {
           employees[employeeIndex] = {...updatedData,id:employeeId};
         //   console.log("THIS IS A UPDATE", employees[employeeIndex]);
-          saveEmployeesToFile();
+        //   saveEmployeesToFile();
           res.json(employees);
         } else {
           res.status(404).json({ error: 'Employee not found.' });
@@ -111,7 +118,7 @@ app.post('/updateEmployee/', (req, res) => {
     try {
         const employeeId = req.params.id;
         employees = employees.filter(employee => employee.id !== parseInt(employeeId));
-        saveEmployeesToFile();
+        // saveEmployeesToFile();
         res.status(200).json(employees);
     } catch (error) {
         res.status(500).json({error: " error deleting employee"})
@@ -129,7 +136,7 @@ app.post('/updateEmployee/', (req, res) => {
             {
                 return a.fullName.localeCompare(b.fullName);
             });
-            saveEmployeesToFile(employees);
+            // saveEmployeesToFile(employees);
             res.status(200).json(sortedByNameAsc);
         }
         else if(option=="nameDesc")
