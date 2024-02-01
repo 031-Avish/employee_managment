@@ -7,15 +7,14 @@ import Allemployee from './Allemployee';
 import Filter from './Filter';
 export default function Home() {
     const [searchTerm, setSearchTerm] = useState('');
-    // const [searchedEmployee, setSearchedEmployee] = useState(null);
     const [isUpdateClicked, setIsUpdateClicked] = useState(false);
-    // store all the employee details 
-    const [allEmployee, setAllEmployee] = useState(null);
     
+    const [allEmployee, setAllEmployee] = useState(null);
+
     const searchItem = function (e) {
         setSearchTerm(e.target.value);
-        if(searchTerm.length==1) 
-        getAllEmployee();
+        if (searchTerm.length == 1)
+            getAllEmployee();
         console.log(searchTerm);
     }
     const getAllEmployee = async () => {
@@ -49,11 +48,17 @@ export default function Home() {
     }, []);
 
     return (
-        <div>
-            <input type="text" placeholder="Search..." value={searchTerm} onChange={searchItem} />
-            <button onClick={searchEmployee}>Search</button>
+        <div >
+            <div class="navbar">
+                <h2>Employee Managment
+                </h2>
+                <div>
+                <input type="text" class="search-input" placeholder="Search..." value={searchTerm} onChange={searchItem} />
+                <button class="search-button" onClick={searchEmployee}>Search</button>
+                </div>
+                <Filter setAllEmployee={setAllEmployee} />
+            </div>
 
-            <Filter setAllEmployee={setAllEmployee}/>
 
             <div className="employees-page">
                 <h1>Employee Details</h1>
@@ -62,11 +67,11 @@ export default function Home() {
                         {allEmployee.map((employee) => {
                             return (
                                 <Allemployee
-                    employee={employee}
-                    setAllEmployee={setAllEmployee}
-                  />
-                                
-                                );
+                                    employee={employee}
+                                    setAllEmployee={setAllEmployee}
+                                />
+
+                            );
                         }
                         )}
                     </div>
@@ -74,11 +79,11 @@ export default function Home() {
             </div>
 
 
-                {/* <button onClick={getAllEmployee}>Show employee</button> */}
-                {/* <button >update employee</button> */}
-                {/* <button>Show employee</button> */}
-                {/* <button>Show employee</button> */}
-            
+            {/* <button onClick={getAllEmployee}>Show employee</button> */}
+            {/* <button >update employee</button> */}
+            {/* <button>Show employee</button> */}
+            {/* <button>Show employee</button> */}
+
         </div>
     )
 }

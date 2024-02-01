@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import "./Filter.css"
 export default function Filter({setAllEmployee}) {
   const [sortOption, setSortOption] = useState('');
 
@@ -21,9 +22,9 @@ export default function Filter({setAllEmployee}) {
   };
 
   return (
-    <div>
-    <h1>Simple Page with Sorting Radio Buttons</h1>
-    <div>
+    <div className='filter-option'>
+    <label className='radio-div'>Filter by </label>
+    <div className='radio-div'>
       <input
         type="radio"
         id="nameAsc"
@@ -32,9 +33,9 @@ export default function Filter({setAllEmployee}) {
         checked={sortOption === 'nameAsc'}
         onChange={() => handleSortChange('nameAsc')}
       />
-      <label htmlFor="nameAsc">By Name Asc</label>
+      <label htmlFor="nameAsc">Name Asc</label>
     </div>
-    <div>
+    <div className='radio-div'>
       <input
         type="radio"
         id="nameDesc"
@@ -43,9 +44,9 @@ export default function Filter({setAllEmployee}) {
         checked={sortOption === 'nameDesc'}
         onChange={() => handleSortChange('nameDesc')}
       />
-      <label htmlFor="nameDesc">By Name Desc</label>
+      <label htmlFor="nameDesc">Name Desc</label>
     </div>
-    <div>
+    <div className='radio-div'>
       <input
         type="radio"
         id="salaryLow"
@@ -54,9 +55,9 @@ export default function Filter({setAllEmployee}) {
         checked={sortOption === 'salaryLow'}
         onChange={() => handleSortChange('salaryLow')}
       />
-      <label htmlFor="salaryLow">By Salary Low</label>
+      <label htmlFor="salaryLow">Salary Low</label>
     </div>
-    <div>
+    <div className='radio-div'>
       <input
         type="radio"
         id="salaryHigh"
@@ -65,7 +66,7 @@ export default function Filter({setAllEmployee}) {
         checked={sortOption === 'salaryHigh'}
         onChange={() => handleSortChange('salaryHigh')}
       />
-      <label htmlFor="salaryHigh">By Salary High</label>
+      <label htmlFor="salaryHigh">Salary High</label>
     </div>
   </div>
 );

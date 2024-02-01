@@ -1,4 +1,4 @@
-/* EmployeesPage.css */
+/* EmployeesPage.css
 .employees-page {
     padding: 20px;
   }
@@ -41,4 +41,56 @@
     flex-direction: column;
     gap: 10px;
   }
+   */
+  .employees-grid{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    flex-wrap: wrap;
+    border: 2px solid #070707;
+    border-radius: 20px;
+    margin: 20px;
+    padding: 10px;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .body{
+        
+        margin: 10px;
+        padding: 5px;
+  }
+  .navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #91e3ee;
+    padding: 10px;
+  }
+  
+  input {
+    padding: 6px;
+    background-color: azure;
+    border-radius: 4px;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    margin: 5px;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 850px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .search-button {
+      margin-top: 10px;
+    }
+  }
+  
   
