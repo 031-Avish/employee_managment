@@ -60,7 +60,7 @@ app.post('/updateEmployee/', (req, res) => {
     try {
         const employeeId = req.body.id;
         const updatedData = req.body.updatedEmp;
-        console.log(req.bod)
+        console.log(updatedData)
         // verify all values are entered correctly
         for (let key in updatedData) {
             if (updatedData[key] === null || updatedData[key] === undefined || updatedData[key] === '') {

@@ -6,7 +6,13 @@ import "./Allemployee.css"
 export default function Allemployee({ employee, setAllEmployee }) {
    // to hide or show form 
   const [showForm, setShowForm] = useState(false);
-  const [updatedEmp, setUpdatedEmp] = useState(null);
+  const [updatedEmp, setUpdatedEmp] = useState(
+    {
+    "fullName": "",
+    "age":null ,
+    "salary": null,
+    "department": ""}
+  );
 
 
   // read form data
