@@ -127,7 +127,7 @@ app.post('/updateEmployee/', (req, res) => {
     } else {
       const averageSalary =  employees.reduce((acc, employee) => acc + employee.salary, 0);
       console.log(averageSalary);
-      res.send( averageSalary);
+      res.json( {averageSalary:averageSalary});
     }
   });
   
