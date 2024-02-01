@@ -14,7 +14,13 @@ app.get('/',(req,res)=>{
 app.use(cors());
 const PORT = 5000;
 // Load existing employee records
-let employees = JSON.parse(fs.readFileSync('employee.json', 'utf8'));
+let employees;
+try {
+    employees = JSON.parse(fs.readFileSync('employee.json', 'utf8'));
+} catch (error) {
+    console.error('Error reading file:', err.message);
+}
+
 // console.log(employees)
 let empsort= [...employees];
 function saveEmployeesToFile() {
