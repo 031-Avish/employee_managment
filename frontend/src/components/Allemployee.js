@@ -21,7 +21,7 @@ export default function Allemployee({ employee ,setAllEmployee }) {
         console.log(employee.id);
         const {data} = await axios.post(`/updateEmployee`, { id: employee.id, formData });
         console.log('Updated details:', data);
-        if(data.error===undefined){
+        if(data.error!==undefined){
           alert(data.error);
           return;
         }
@@ -55,7 +55,6 @@ export default function Allemployee({ employee ,setAllEmployee }) {
             <div className="employees-detail" key={employee.id}>
                 <h2>{employee.fullName}</h2>
                 <p>age: {employee.age}</p>
-                <p>data of Birth : {employee.dateOfBirth}</p>
                 <p>salary : {employee.salary}</p>
                 <p>Department: {employee.department}</p>
                 {showUpdateForm ? (
@@ -67,10 +66,6 @@ export default function Allemployee({ employee ,setAllEmployee }) {
         <div className='form-div'>
           <label htmlFor="age">Age:</label>
           <input type="number" id="age" name="age" value={formData?.age} onChange={handleChange} />
-        </div>
-        <div className='form-div'>
-          <label htmlFor="dateOfBirth">Date of Birth:</label>
-          <input type="date" id="dateOfBirth" name="dateOfBirth" value={formData?.dateOfBirth} onChange={handleChange} />
         </div>
         <div className='form-div'>
           <label htmlFor="salary">Salary:</label>

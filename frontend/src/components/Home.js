@@ -15,7 +15,8 @@ export default function Home() {
     const calcuateSal=async()=>{
         try{
             const {data}=await axios.get('/calcutateAvgSal');
-            setAverageSal(data);
+            setAverageSal(data.averageSalary);
+            console.log(data);
             setShow(true);
         }catch(error)
         {
@@ -34,7 +35,7 @@ export default function Home() {
     const getAllEmployee = async () => {
         try {
             const { data } = await axios.get('/getAllEmployee');
-            setAllEmployee(data.averageSalary);
+            setAllEmployee(data);
             console.log(allEmployee);
         }
         catch (error) {

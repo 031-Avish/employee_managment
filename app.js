@@ -49,10 +49,13 @@ app.post('/updateEmployee/', (req, res) => {
     try {
         const employeeId = req.body.id;
         const updatedData = req.body.formData;
-        const Validation = Object.values(updatedData).every(value => value !== undefined && value !== null);
-        if(!Validation) res.json({error:'please fill all the fields'});
-        // console.log(updatedData);
-        else{
+        for (let key in updatedData) {
+            if (updatedData[key] === null || updatedData[key] === undefined || updatedData[key] === '') {
+                res.json({error:'please fill all the fields'});
+        
+        }
+        
+    }
         const employeeIndex = employees.findIndex(employee => employee.id === employeeId);
         if (employeeIndex !== -1) {
           employees[employeeIndex] = {...updatedData,id:employeeId};
@@ -62,7 +65,6 @@ app.post('/updateEmployee/', (req, res) => {
         } else {
           res.status(404).json({ error: 'Employee not found.' });
         }
-    }
     } catch (error) {
         res.status(500).json({error: "error updating employee"})
     }
@@ -125,8 +127,7 @@ app.post('/updateEmployee/', (req, res) => {
     if (employees.length === 0) {
       res.json({ error: 'No employees in the company.' });
     } else {
-      const averageSalary =  employees.reduce((acc, employee) => acc + employee.salary, 0);
-      console.log(averageSalary);
+      const averageSalary =  employees.reduce((acc, employee) => acc + parseInt(employee.salary), 0);
       res.json( {averageSalary:averageSalary});
     }
   });
