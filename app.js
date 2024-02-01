@@ -6,21 +6,12 @@ const cors = require('cors');
 const app = express();
 
 console.log(__dirname);
-// Serve static files from the 'client' directory
-// app.get('/',(req,res)=>{
-//     app.use(express.static(path.resolve(__dirname,'build')))
-//     res.sendFile(path.resolve(__dirname,'build','index.html'))
-// })
 app.use(cors());
-
 app.use(express.static(path.join(__dirname, 'build')));
-
-// Serve the 'index.html' file from the 'build' directory
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 const PORT = 5000;
-// Load existing employee records
 let employees;
 try {
     employees = JSON.parse(fs.readFileSync('employee.json', 'utf8'));
@@ -30,9 +21,9 @@ try {
 
 // console.log(employees)
 let empsort= [...employees];
-// function saveEmployeesToFile() {
-//     fs.writeFileSync('employee.json', JSON.stringify(employees, null, 2), 'utf8');
-// }
+function saveEmployeesToFile() {
+    fs.writeFileSync('employee.json', JSON.stringify(employees, null, 2), 'utf8');
+}
   
 app.use(bodyParser.json());
 app.get('/getAllEmployee', (req, res) => {
