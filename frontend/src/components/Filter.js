@@ -8,7 +8,7 @@ export default function Filter({setAllEmployee}) {
     setSortOption(option);
 
     try{
-        const {data}=await axios.post(`http://localhost:5000/filteremployee`,{
+        const {data}=await axios.post(`/filteremployee`,{
               option: option,
             });
             setAllEmployee(data);

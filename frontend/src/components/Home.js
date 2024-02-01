@@ -29,7 +29,7 @@ export default function Home() {
     }
     const searchEmployee = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/getAllOnSearch', {
+            const { data } = await axios.get('/getAllOnSearch', {
                 params: {
                     name: searchTerm
                 }
