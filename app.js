@@ -11,7 +11,7 @@ console.log(__dirname);
 //     app.use(express.static(path.resolve(__dirname,'build')))
 //     res.sendFile(path.resolve(__dirname,'build','index.html'))
 // })
-// app.use(cors());
+app.use(cors());
 
 app.use(express.static(path.join(__dirname, 'build')));
 
