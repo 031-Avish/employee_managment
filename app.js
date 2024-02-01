@@ -78,7 +78,7 @@ let empsort= [...employees];
 app.use(bodyParser.json());
 app.get('/getAllEmployee', (req, res) => {
     try {
-        res.status(200).json({msg:"hello"});
+        res.status(200).json(employees);
     } catch (error) {
         res.status(500).json({error: "unable to fetch all employee"});
     }
