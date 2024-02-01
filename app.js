@@ -52,6 +52,7 @@ app.post('/updateEmployee/', (req, res) => {
         const Validation = Object.values(updatedData).every(value => value !== undefined && value !== null);
         if(!Validation) res.json({error:'please fill all the fields'});
         // console.log(updatedData);
+        else{
         const employeeIndex = employees.findIndex(employee => employee.id === employeeId);
         if (employeeIndex !== -1) {
           employees[employeeIndex] = {...updatedData,id:employeeId};
@@ -61,6 +62,7 @@ app.post('/updateEmployee/', (req, res) => {
         } else {
           res.status(404).json({ error: 'Employee not found.' });
         }
+    }
     } catch (error) {
         res.status(500).json({error: "error updating employee"})
     }
