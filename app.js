@@ -10,9 +10,9 @@ const app = express();
 app.use(cors());
 
 // rendering frontend
-app.use(express.static(path.join(__dirname,'view','build')));
+app.use(express.static(path.join(__dirname,'build')));
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname,'view','build', 'index.html'));
+  res.sendFile(path.join(__dirname,'build', 'index.html'));
 });
 const PORT = 5000;
 app.use(bodyParser.json());
