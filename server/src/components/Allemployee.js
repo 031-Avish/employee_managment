@@ -23,7 +23,7 @@ export default function Allemployee({ employee, setAllEmployee }) {
     e.preventDefault();
     try {
       console.log(updatedEmp);
-      const { data } = await axios.post(`http://localhost:5000/api/update/updateEmployee`, { id: employee.id, updatedEmp });
+      const { data } = await axios.post(`/api/update/updateEmployee`, { id: employee.id, updatedEmp });
       console.log('Updated details:', data);
       if (data.error) {
         alert(data.error);
@@ -51,7 +51,7 @@ export default function Allemployee({ employee, setAllEmployee }) {
   const deleteEmployee = async () => {
     try {
       console.log("send req");
-      const { data } = await axios.delete(`http://localhost:5000/api/del/delete/${employee.id}`);
+      const { data } = await axios.delete(`/api/del/delete/${employee.id}`);
       if (data.error) {
         alert(data.error);
         console.log(data);

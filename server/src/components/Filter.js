@@ -5,7 +5,7 @@ import axios from 'axios';
 export default function Filter({ setAllEmployee }) {
   const getSelectedOption = async (option) => {
     try {
-      const { data } = await axios.post(`http://localhost:5000/api/filter/filteremployee`, {
+      const { data } = await axios.post(`/api/filter/filteremployee`, {
         option: option,
       });
       if(data.error){

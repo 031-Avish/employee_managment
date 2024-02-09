@@ -23,7 +23,7 @@ export default function Addemployee({ setAllEmployee }) {
   const addNewEmployee = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post(`http://localhost:5000/api/add/addNewEmployee`, { newEmp });
+      const { data } = await axios.post(`/api/add/addNewEmployee`, { newEmp });
       if (data.error) {
         alert(data.error);
         return;

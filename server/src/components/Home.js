@@ -18,7 +18,7 @@ export default function Home() {
     // salary calculation 
     const calcuateSal = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/avgsal/calcutateAvgSal');
+            const { data } = await axios.get('/api/avgsal/calcutateAvgSal');
             setAverageSal(data.averageSalary);
             console.log(data);
             setShow(true);
@@ -41,7 +41,7 @@ export default function Home() {
     // call to get all employees
     const getAllEmployee = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/getAllEmployee');
+            const { data } = await axios.get('/api/getAllEmployee');
             setAllEmployee(data);
             console.log(allEmployee);
         }
@@ -53,7 +53,7 @@ export default function Home() {
     // call for serching all employees
     const searchEmployee = async () => {
         try {
-            const { data } = await axios.get('http://localhost:5000/api/search/getSearchedEmp', {
+            const { data } = await axios.get('/api/search/getSearchedEmp', {
                 params: {
                     name: searchTerm
                 }
