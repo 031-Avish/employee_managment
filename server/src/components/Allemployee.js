@@ -1,20 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-import "./Allemployee.css"
 
 // function based component 
 export default function Allemployee({ employee, setAllEmployee }) {
-   // to hide or show form 
+  // to hide or show form 
   const [showForm, setShowForm] = useState(false);
   const [updatedEmp, setUpdatedEmp] = useState(
-    {
-    "fullName": "",
-    "age":null ,
-    "salary": null,
-    "department": ""}
+    {"fullName": "","age": null,"salary": null,"department": ""}
   );
-
-
   // read form data
   const formInput = (e) => {
     const { name, value } = e.target;
@@ -23,45 +16,55 @@ export default function Allemployee({ employee, setAllEmployee }) {
       [name]: value
     })
     );
-    console.log(updatedEmp);
+    // console.log(updatedEmp);
   };
-
   // update employee and save in db 
   const updateEmployee = async (e) => {
     e.preventDefault();
     try {
       console.log(updatedEmp);
-      const { data } = await axios.post(`/updateEmployee`, { id: employee.id, updatedEmp });
+      const { data } = await axios.post(`http://localhost:5000/api/update/updateEmployee`, { id: employee.id, updatedEmp });
       console.log('Updated details:', data);
-      if (data.error !== undefined) {
+      if (data.error) {
         alert(data.error);
         return;
       }
       setShowForm(false);
       setAllEmployee(data);
+      setUpdatedEmp({"fullName": "","age": null,"salary": null,"department": ""});
+      alert(" employee updated successfully ");
     }
     catch (error) {
       console.log(error);
+      alert("Something went wrong");
     }
   };
-
   // show or hide 
   const showHide = () => {
     setShowForm(true);
   }
-
+  const cancel = () => {
+    setUpdatedEmp({"fullName": "","age": null,"salary": null,"department": ""});
+    setShowForm(false);
+  }
   // delete the employee 
   const deleteEmployee = async () => {
     try {
-      const { data } = await axios.delete(`/delete/${employee.id}`);
+      console.log("send req");
+      const { data } = await axios.delete(`http://localhost:5000/api/del/delete/${employee.id}`);
+      if (data.error) {
+        alert(data.error);
+        console.log(data);
+        return
+      }
       setAllEmployee(data);
+      alert("employee deleted successfully ");
     }
     catch (error) {
       console.log(error);
+      alert("Something went worng");
     }
   }
-
-
   return (
     <div>
       <div className="employees-detail" key={employee.id}>
@@ -88,6 +91,7 @@ export default function Allemployee({ employee, setAllEmployee }) {
               <input type="text" id="department" name="department" value={updatedEmp?.department} onChange={formInput} />
             </div>
             <button type="submit">Update Employee</button>
+            <button type="reset" onClick={cancel}>cancel</button>
           </form>
         ) : (
           <button onClick={showHide}>Update</button>

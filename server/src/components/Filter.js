@@ -1,33 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import axios from 'axios';
 
 // component for filter/sort
-
 export default function Filter({ setAllEmployee }) {
-  // to see which option is selected 
-  const [selectedOption, setSelectedOption] = useState('');
-
   const getSelectedOption = async (option) => {
-    setSelectedOption(option);
     try {
-      const { data } = await axios.post(`/filteremployee`, {
+      const { data } = await axios.post(`http://localhost:5000/api/filter/filteremployee`, {
         option: option,
       });
+      if(data.error){
+        alert(data.error);
+        return ;
+      }
       setAllEmployee(data);
       console.log(data);
     } catch (error) {
       console.log(error);
     }
-    console.log(option);
+    // console.log(option);
   };
 
   return (
-    <div className='filter-option'>
-      <label htmlFor="selectedOption" className='select-label'>Filter by:</label>
+    <div>
+      <label htmlFor="selectedOption" className='select-label'>Filter by: </label>
       <select
         id="selectedOption"
-        className='select-dropdown'
-        value={selectedOption}
+        className='options'
         onChange={(e) => getSelectedOption(e.target.value)}
       >
         <option value="">Select</option>

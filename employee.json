@@ -1,31 +1,10 @@
 [
   {
-    "fullName": "Avish Mehta",
-    "age": "23",
-    "salary": "750000",
-    "department": "HR",
-    "id": 1
-  },
-  {
-    "id": 2,
-    "fullName": "Jane Smith",
-    "age": 35,
-    "salary": 75000,
-    "department": "HR"
-  },
-  {
-    "id": 3,
-    "fullName": "Bob Johnson",
-    "age": 40,
-    "salary": 90000,
-    "department": "Finance"
-  },
-  {
-    "id": 4,
-    "fullName": "Alice Brown",
-    "age": 32,
-    "salary": 68000,
-    "department": "Marketing"
+    "fullName": "Harsh Ragu",
+    "age": "24",
+    "salary": "54000",
+    "department": "Finance",
+    "id": 4
   },
   {
     "id": 5,
@@ -208,5 +187,19 @@
     "age": 28,
     "salary": 67000,
     "department": "HR"
+  },
+  {
+    "fullName": "Ashok verma",
+    "age": "23",
+    "salary": "80000",
+    "department": "Finance",
+    "id": 31
+  },
+  {
+    "fullName": "kartik verma",
+    "age": "23",
+    "salary": "92000",
+    "department": "HR",
+    "id": 32
   }
 ]
