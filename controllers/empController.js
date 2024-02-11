@@ -4,11 +4,15 @@ let employees;
 try {
     employees = JSON.parse(fs.readFileSync('./employee.json', 'utf8'));
 } catch (error) {
-    console.error('Error reading file:', err.message);
+    console.log('Error reading file:', error);
 }
 // save the data 
 function saveInFile() {
-    fs.writeFileSync('./employee.json', JSON.stringify(employees, null, 2), 'utf8');
+    try {
+        fs.writeFileSync('./employee.json', JSON.stringify(employees, null, 2), 'utf8');
+    } catch (error) {
+        console.log('error saving the file ',error);
+    }
 }
 // get all the employees 
 const getAllEmployee = (req, res) => {
